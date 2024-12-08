@@ -1,12 +1,12 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem } from "@mui/material"
 import { useState } from "react"
 
-interface ModalDeleteProps {
-  id: string
+interface ModalDeleteOrganizationMemberProps {
+  id: number
   name: string
 }
 
-export function ModalDelete({ id, name }: ModalDeleteProps) {
+export function ModalDeleteOrganizationMember({ id, name }: ModalDeleteOrganizationMemberProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleClickOpen () {
@@ -18,27 +18,27 @@ export function ModalDelete({ id, name }: ModalDeleteProps) {
   }
 
   function onDelete () {
-    console.log('record deleted', id)
+    // TODO: Adicona a ação de eliminar o membro com o id
+    console.log('Eliminando o membro com o id:', id)
 
     handleOnClose()
   }
-  
+
   return (
     <>
       <MenuItem onClick={handleClickOpen}>Eliminar</MenuItem>
 
       <Dialog open={isOpen} onClose={handleOnClose}>
         <DialogTitle>Eliminar {name}</DialogTitle>
-        
-        <DialogContent>
-            Você tem certeza que deseja eliminar o registro <strong>{name}</strong>?
 
+        <DialogContent>
+            Tem certeza de que deseja remover o membro <strong>{name}</strong> da organização? Lembre-se de que essa ação é irreversível.
             <DialogActions>
-              <Button onClick={handleOnClose}>
+              <Button color="inherit" onClick={handleOnClose}>
                 Cancelar
               </Button>
-              <Button color="primary" variant="contained" onClick={onDelete}>
-                Salvar
+              <Button color="error" variant="contained" onClick={onDelete}>
+                Eliminar
               </Button>
             </DialogActions>
         </DialogContent>

@@ -1,45 +1,43 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material"
 import { ChangeEvent, useState } from "react"
 
-type Record = {
+type Member = {
   id: string
   name: string
   age: number
   city: string
 }
 
-// interface ModalCreateRecordProps {
-  // onClose: () => void
-// }
-
-export function ModalCreateRecord() {
-  const [newRecord, setNewRecord] = useState<Record>({
+export function ModalCreateOrganizationMember() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [newMember, setNewMember] = useState<Member>({
     id: "",
     name: "",
     age: 0,
     city: "",
   })
 
-  function handleChange (field: keyof Record, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
-    setNewRecord({ ...newRecord, [field]: event.target.value })
+  function handleChange (field: keyof Member, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+    setNewMember({ ...newMember, [field]: event.target.value })
   }
 
-  function onSubmit (event: React.FormEvent) {
-    event.preventDefault()
-
-    console.log(newRecord)
-  }
-
-  const [isOpen, setIsOpen] = useState(false)
-
-  function handleClickOpen () {
+  function handleClickOpen (): void {
     setIsOpen(true)
   }
 
-  function handleOnClose () {
+  function handleOnClose (): void {
     setIsOpen(false)
   }
-  
+
+  function onSubmit (event: React.FormEvent): void {
+    event.preventDefault()
+
+    // TODO: Adicona a ação de criar o membro
+    console.log('Criando o membro:', newMember)
+
+    handleOnClose()
+  }
+
   return (
     <>
       <Button variant="contained" onClick={handleClickOpen}>
@@ -47,22 +45,22 @@ export function ModalCreateRecord() {
       </Button>
 
       <Dialog open={isOpen} onClose={handleOnClose}>
-        <DialogTitle>Adicionar Novo Registro</DialogTitle>
-        
+        <DialogTitle>Adicionar Novo Membro</DialogTitle>
+
         <DialogContent>
-            <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit}>
             <TextField
               label="ID"
               fullWidth
               margin="normal"
-              value={newRecord.id}
+              value={newMember.id}
               onChange={(e) => handleChange("id", e)}
             />
             <TextField
               label="Nome"
               fullWidth
               margin="normal"
-              value={newRecord.name}
+              value={newMember.name}
               onChange={(e) => handleChange("name", e)}
             />
             <TextField
@@ -70,14 +68,14 @@ export function ModalCreateRecord() {
               fullWidth
               margin="normal"
               type="number"
-              value={newRecord.age}
+              value={newMember.age}
               onChange={(e) => handleChange("age", e)}
             />
             <TextField
               label="Cidade"
               fullWidth
               margin="normal"
-              value={newRecord.city}
+              value={newMember.city}
               onChange={(e) => handleChange("city", e)}
             />
 
@@ -86,10 +84,10 @@ export function ModalCreateRecord() {
                 Cancelar
               </Button>
               <Button type="submit" color="primary" variant="contained">
-                Salvar
+                Criar
               </Button>
             </DialogActions>
-            </form>
+          </form>
         </DialogContent>
       </Dialog>
     </>
