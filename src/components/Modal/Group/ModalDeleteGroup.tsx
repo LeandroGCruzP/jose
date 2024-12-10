@@ -1,12 +1,12 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem } from "@mui/material"
 import { useState } from "react"
 
-interface ModalDeleteOrganizationMemberProps {
+interface ModalDeleteGroupProps {
   id: number
   name: string
 }
 
-export function ModalDeleteOrganizationMember({ id, name }: ModalDeleteOrganizationMemberProps) {
+export function ModalDeleteGroup({ id, name }: ModalDeleteGroupProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleClickOpen () {
@@ -18,8 +18,8 @@ export function ModalDeleteOrganizationMember({ id, name }: ModalDeleteOrganizat
   }
 
   function onDelete () {
-    // TODO: Adicona a ação de eliminar o membro com o id
-    console.log('Eliminando o membro com o id:', id)
+    // TODO: Adicona a ação de eliminar o grupo com o id
+    console.log('Eliminando o groupo com o id:', id)
 
     handleOnClose()
   }
@@ -32,7 +32,7 @@ export function ModalDeleteOrganizationMember({ id, name }: ModalDeleteOrganizat
         <DialogTitle>Eliminar {name}</DialogTitle>
 
         <DialogContent>
-            Tem certeza de que deseja eliminar o membro <strong>{name}</strong> da organização? Lembre-se de que essa ação é irreversível.
+            Tem certeza de que deseja eliminar o grupo <strong>{name}</strong> da organização? Lembre-se de que essa ação é irreversível.
             <DialogActions>
               <Button color="inherit" onClick={handleOnClose}>
                 Cancelar

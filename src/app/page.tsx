@@ -3,7 +3,7 @@
 import { LockIcon } from "@/components/icons/LockIcon"
 import { UnlockIcon } from "@/components/icons/UnlockIcon"
 import { SearchInput } from "@/components/InputSearch"
-import { MenuOrganizationMember } from "@/components/Menu/OrganizationMember/MenuOrganizationMember"
+import { MenuOrganizationMember } from "@/components/Menu/MenuOrganizationMember"
 import { ModalCreateOrganizationMember } from "@/components/Modal/OrganizationMember/ModalCreateOrganizationMember"
 import { Avatar, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, ToggleButton, ToggleButtonGroup } from "@mui/material"
 import { ChangeEvent, MouseEvent, useState } from "react"
